@@ -1,6 +1,6 @@
 import sys
 import math
-
+#Для удобства запуска txt файлы находятся в той же директории, что и код
 def read_circle_data(filename):
     with open(filename, 'r') as file:
         data = file.readlines()
