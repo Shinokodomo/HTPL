@@ -1,0 +1,9 @@
+Пояснения:
+Чтение данных из файлов tests.json и values.json:
+Создание словаря значений
+Запись результатов в report.json
+Обновленные данные записываются в новый файл report.json с помощью функции write_json_file(filepath, data).
+Аргументы командной строки:
+Скрипт принимает три аргумента командной строки: путь к файлу tests.json, путь к файлу values.json и путь для создания файла report.json.
+python task3.py tests.json values.json report.json
+Этот скрипт прочитает данные из tests.json и values.json, обновит значения и запишет результат в новый файл report.json.
