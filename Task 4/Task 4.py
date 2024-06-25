@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 
 def min_moves_to_equal_elements(filename):
@@ -14,6 +15,10 @@ def min_moves_to_equal_elements(filename):
     return moves
 
 if __name__ == "__main__":
-    filename = 'numbers.txt'
+    if len(sys.argv) != 2:
+        print("Usage: python Task4.py <filename>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
     result = min_moves_to_equal_elements(filename)
     print(result)
