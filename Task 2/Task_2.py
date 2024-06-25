@@ -1,6 +1,6 @@
 import sys
 import math
-#Для удобства запуска txt файлы находятся в той же директории, что и код
+
 def read_circle_data(filename):
     with open(filename, 'r') as file:
         data = file.readlines()
@@ -19,12 +19,12 @@ def read_points(filename):
 def distance(x1, y1, x2, y2):
     return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
-def point_position_relative_to_circle(point, center, radius):
+def point_position_relative_to_circle(point, center, radius, epsilon=1e-7):
     px, py = point
     cx, cy = center
     dist = distance(px, py, cx, cy)
 
-    if dist == radius:
+    if math.isclose(dist, radius, abs_tol=epsilon):
         return 0 # точка лежит на окружности
     elif dist < radius:
         return 1 # точка внутри окружности
@@ -32,8 +32,12 @@ def point_position_relative_to_circle(point, center, radius):
         return 2 # точка снаружи окружности
 
 if __name__ == "__main__":
-    circle_filename = "circle.txt"
-    points_filename = "points.txt"
+    if len(sys.argv) != 3:
+        print("Usage: python task2.py <circle_file> <points_file>")
+        sys.exit(1)
+
+    circle_filename = sys.argv[1]
+    points_filename = sys.argv[2]
 
     center, radius = read_circle_data(circle_filename)
     points = read_points(points_filename)
